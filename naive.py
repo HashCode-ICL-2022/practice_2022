@@ -1,8 +1,9 @@
 from import_file import import_file
+from export_file import export_file
 
 
 def get_ingredients(all_likes, all_dislikes):
-    
+
     score = 0
     ingredients = set()
     for likes, dislikes in zip(all_likes, all_dislikes):
@@ -12,8 +13,8 @@ def get_ingredients(all_likes, all_dislikes):
                 bad = True
         if bad:
             continue
-            
-        
+
+
         score += 1
         ingredients.update(set(likes))
 
@@ -30,3 +31,4 @@ if __name__ == "__main__":
     likes, dislikes = import_file(fname)
     score, ingredients = get_ingredients(likes, dislikes)
     print(f"score: {score}/{len(likes)}, \ningredients: {ingredients}")
+    export_file(fname, ingredients)
