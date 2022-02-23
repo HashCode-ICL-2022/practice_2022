@@ -3,15 +3,13 @@ def import_file(file_name):
         # Read first line
         N = int(file.readline())
 
-        # print(f"Loading {N} Customers")
+        print(f"Loading {N} Customers")
         likes = []
-        for i in range(N):
-            line = file.readline().rstrip().split(" ")
-            likes.extend(line[1:])
-
         dislikes = []
         for i in range(N):
             line = file.readline().rstrip().split(" ")
-            dislikes.extend(line[1:])
+            likes.append(line[1:])
+            line = file.readline().rstrip().split(" ")
+            dislikes.append(line[1:])
 
         return likes, dislikes
