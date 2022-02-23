@@ -10,12 +10,31 @@ def improve_currents(fname):
         initial_ingredients = None
 
     likes, dislikes = import_file(fname)
-    old_solution = import_solution(fname)
-    print(old_solution)
+    pizza = import_solution(fname)
+    not_on_pizza = set() - pizza
+    score = score(pizza)
+    is_score_change = True
 
+    while is_score_change:
+        for ingredient in pizza:
+            test_pizza = pizza.copy()
+            test_pizza -= ingredient
+            tscore = score(test_pizza)
+            if tscore > score:
+                score = tscore
+                pizza = test_pizza
+                break
+        for ingredient in not_on_pizza:
+            test_pizza = pizza.copy()
+            test_pizza += ingredient
+            tscore = score(test_pizza)
+            if tscore > score:
+                score = tscore
+                pizza = test_pizza
+                break
+        is_score_change = False
 
-
-
+    export_file(fname, pizza)
 
 if __name__ == '__main__':
     # fname = 'data/a_an_example.in.txt'
