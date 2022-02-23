@@ -1,5 +1,5 @@
 def import_file(file_name):
-    with open('data/' + file_name, 'r') as file:
+    with open(file_name, 'r') as file:
         # Read first line
         N = int(file.readline())
 
@@ -13,3 +13,8 @@ def import_file(file_name):
             dislikes.append(line[1:])
 
         return likes, dislikes
+
+
+def import_ingredients(filepath):
+    with open(filepath, 'r') as fp:
+        return fp.read().strip().split(" ")
