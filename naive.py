@@ -25,7 +25,8 @@ if __name__ == "__main__":
     # fname = 'a_an_example.in.txt'
     # fname = 'b_basic.in.txt'
     # fname = 'c_coarse.in.txt'
-    fname = 'd_difficult.in.txt'
+    # fname = 'd_difficult.in.txt'
+    fname = 'e_elaborate.in.txt'
     likes, dislikes = import_file(fname)
     score, ingredients = get_ingredients(likes, dislikes)
     print(f"score: {score}/{len(likes)}, \ningredients: {ingredients}")
