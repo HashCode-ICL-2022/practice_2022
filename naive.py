@@ -20,8 +20,10 @@ def get_ingredients(all_likes, all_dislikes):
             continue
 
         score += 1
+        not_ingredients.update(set(dislikes))
         ingredients.update(set(likes))
         banned_ingredients.update(set(dislikes))
+
 
     return score, ingredients
 
@@ -35,6 +37,6 @@ if __name__ == "__main__":
     # fname = 'e_elaborate.in.txt'
     likes, dislikes = import_file(fname)
     score, ingredients = get_ingredients(likes, dislikes)
-    print(f"score: {score}/{len(likes)}, \ningredients: {ingredients}")
-    # print(score)
+    # print(f"score: {score}/{len(likes)}, \ningredients: {ingredients}")
+    print(score)
     export_file(fname, ingredients)
