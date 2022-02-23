@@ -1,22 +1,27 @@
 from import_file import import_file
 from export_file import export_file
+from operator import itemgetter
 
 
 def get_ingredients(all_likes, all_dislikes):
 
     score = 0
     ingredients = set()
+    banned_ingredients = set()
     for likes, dislikes in zip(all_likes, all_dislikes):
         bad = False
         for dislike in dislikes:
             if dislike in ingredients:
                 bad = True
+        for like in likes:
+            if like in banned_ingredients:
+                bad = True
         if bad:
             continue
 
-
         score += 1
         ingredients.update(set(likes))
+        banned_ingredients.update(set(dislikes))
 
     return score, ingredients
 
